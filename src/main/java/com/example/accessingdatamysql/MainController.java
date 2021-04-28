@@ -39,4 +39,11 @@ public class MainController {
     // This returns a JSON or XML with the users
     return userRepository.findAll();
   }
+  
+  @GetMapping("/hellocon")
+	public String helloCon(@RequestParam(value = "name", defaultValue = "controller") String name) {
+		return String.format("hello %s", name);
+		
+  }
+  
 }

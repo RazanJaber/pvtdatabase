@@ -18,10 +18,15 @@ public class AccessingDataMysqlApplication extends SpringBootServletInitializer{
 	}
 	
 	 @Override
-	  protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+	 protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 	    return application.sources(AccessingDataMysqlApplication.class);
-	  }
+	 }
 
+	 
+	 @GetMapping("/hello")
+		public String hello(@RequestParam(value = "name", defaultValue = "application") String name) {
+			return String.format("Hello %s", name);
+	 }
 	
 
 }
