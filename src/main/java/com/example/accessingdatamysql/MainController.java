@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller // This means that this class is a Controller
+@RestController // This means that this class is a Controller
 @RequestMapping(path="/demo") // This means URL's start with /demo (after Application path)
 public class MainController {
   @Autowired // This means to get the bean called userRepository
@@ -28,21 +29,16 @@ public class MainController {
     return "Saved";
   }
   
-  @GetMapping("/hello")
-	public String hello(@RequestParam(value = "name", defaultValue = "world") String name) {
-		return String.format("Hello %s", name);
-		
-	}
-
+ 
   @GetMapping(path="/all")
   public @ResponseBody Iterable<User> getAllUsers() {
     // This returns a JSON or XML with the users
     return userRepository.findAll();
   }
   
-  @GetMapping("/hellocon")
+  @GetMapping("/controller")
 	public String helloCon(@RequestParam(value = "name", defaultValue = "controller") String name) {
-		return String.format("hello %s", name);
+		return String.format("Hello %s", name);
 		
   }
   
